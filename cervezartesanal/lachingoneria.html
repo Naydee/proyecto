@@ -1,0 +1,155 @@
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "cervezasart";
+ 
+    $conn = new mysqli($servername, $username, $password, $dbname);
+ 
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+ 
+    $sql = "SELECT * FROM chingoneria";
+    $result = $conn->query($sql);
+
+    $conn->close();
+?>
+
+<html>
+<head>
+
+<title>La Chingonería</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">	
+<link rel="stylesheet" type="text/css" href="fonts.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+
+<style type="text/css">
+
+body {background-color: #333333;}
+h1 {
+    text-align: center;
+    color: white;
+    }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    }
+li {
+    float: left; padding-left: 70px;
+    }
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    }
+
+ .carousel-control.right, .carousel-control.left{
+    background-image: none !important;
+    background-color: #000;
+  }
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 50%;
+      margin: auto;
+      background: #00ff00;
+  }
+  .leftcarousel-control{
+      background: #ff0000;
+      border: 10px;
+  }
+
+  span{
+    font-size: 35px;
+    margin: 10em 10px 20px 10px;
+    color: #0000ff;
+  }
+
+  table td{ padding: 10px; }
+  img{ width: 100px; }
+
+</style>
+
+<body>
+
+	<h1>Artesanía mexicana: Cervezas</h1>
+  
+  <div class="contenedor">
+  <ul>
+  <li><a class="active" href="index.html">Home</a></li>
+  <li><a href="LaChingoneria.html">La Chingonería</a></li>
+  <li><a href="Cucapa.html">Cucapà</a></li>
+  <li><a href="SieteBarrios.html">Siete Barrios</a></li>
+  <li><a href="Ramuri.html">Ramuri</a></li>
+  <li><a href="BlackPenguin.html">Black Penguin</a></li>
+  <li><a href="Encuentranos.html">Encuentranos</a></li>
+  </ul>
+  </div>
+
+	<div class="container">
+  <br>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+ 
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+    </ol>
+
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="lach1.jpg" alt="lach1" width="auto" height="auto">
+      </div>
+
+      <div class="item">
+        <img src="lach2.jpg" alt="lach2" width="auto" height="auto">
+      </div>
+    
+      <div class="item">
+        <img src="lach3.jpg" alt="lach3" width="460" height="345">
+      </div>
+
+      <div class="item">
+        <img src="lach4.jpg" alt="lach4" width="460" height="345">
+      </div>
+
+       <div class="item">
+        <img src="lach5.jpg" alt="lach5" width="460" height="345">
+      </div>
+    </div>
+
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span aria-hidden="true"></span>
+      <span class="icon-backward2"></span>
+    </a>
+    
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span aria-hidden="true"></span>
+      <span class="icon-forward3"></span>
+    </a>
+  </div>
+</div>
+    
+    <table border="1">
+        <?php while($row = $result->fetch_assoc()): ?>
+        <tr>
+            <td><?php echo $row['Nombre']; ?></td>
+            <td><img src="<?php echo $row['Cerveza']; ?>"></td>
+            <td><?php echo $row['Precio']; ?></td>
+        </tr>
+        <?php endwhile; ?>
+    </table>
+
+</body>
+</html>

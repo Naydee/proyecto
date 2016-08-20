@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cerveza Artesanal</title>
+</head>
+
+ <style type="text/css">
+
+  body {background-color: #333333;
+  }
+  h1 {
+    text-align: center;
+    color: white;
+    }
+ 
+
+  </style>
+
+<body>
+<div class="w3-container w3-center w3-animate-opacity">
+<h1>Introduce tu año de nacimiento:</h1>
+<input id="numb">
+<button type="button" onclick="myFunction()">Submit</button>
+</div>
+<script>
+function myFunction() {
+    var x, text;
+    x = document.getElementById("numb").value;
+    if (isNaN(x) || x < 1810 || x > 1998) {
+        alert("Ooops! Regresa cuando seas legal!");
+    } else {
+        text = window.location='http://127.0.0.1/cervezartesanal/index.html'; 
+    }
+    document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+<img src="cervezas1.jpg" alt="Mountain View" style="width:1200px;height:650px;padding:50px;">
+
+
+</body>
+</html>
+
+
+
+
+
+
